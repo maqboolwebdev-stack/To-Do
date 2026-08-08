@@ -1,5 +1,3 @@
-// src/index.js
-import "./styles.css";
-import { greeting } from "./greeting.js";
+import "./styles/styles.css";
+import "./styles/css-resets.css";
 
-console.log(greeting);
