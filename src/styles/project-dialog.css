@@ -9,7 +9,7 @@
 }
 
 dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.334);
+  background-color: rgba(0, 0, 0, 0.66);
 }
 
 .dialog-heading {
@@ -21,7 +21,7 @@ dialog::backdrop {
 }
 
 .project-input {
-  padding: 0.75rem 1rem;
+  padding: .625rem .75rem;
   background: #2a2a2a;  
   border: 1px solid #3a3a3a;
   color: aliceblue;
@@ -29,6 +29,7 @@ dialog::backdrop {
   outline: none;
   transition: all 0.3s ease;
   letter-spacing: 1px;
+  border-radius: 6px;
 }
 
 .project-input:focus {
