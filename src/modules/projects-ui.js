@@ -1,6 +1,6 @@
 import { projects } from "./projects.js";
 
-const projectContainer = document.querySelector('.projects');
+export const projectContainer = document.querySelector('.projects');
 
 export function renderProjects() {
 
@@ -11,7 +11,7 @@ export function renderProjects() {
         const projectName = document.createElement('h4');
         const projectDeleteBtn = document.createElement('button');
 
-        dynamicProjects.classList = 'dynamic-projects';
+        dynamicProjects.classList.add('dynamic-projects');
         projectName.classList = 'project-name';
         projectDeleteBtn.classList = 'project-delete-btn';
 
@@ -23,7 +23,6 @@ export function renderProjects() {
         projectContainer.append(dynamicProjects);
 
     })
-console.log(projects);
 }
 
 renderProjects();
