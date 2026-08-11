@@ -1,3 +1,5 @@
+import { activeProject } from "./project-active.js";
+
 export const todoSide = document.querySelector('.todos-side');
 
 export function renderTodos(project) {
@@ -36,6 +38,8 @@ export function renderTodos(project) {
     todoDueDate.textContent = todo.dueDate;
     todoEditBtn.textContent = 'Edit';
     todoDeleteBtn.textContent = 'Delete';
+
+    todoDeleteBtn.dataset.id = todo.id;
 
     todoPriority.append(selectPriority);
     todoContainer.append(todoCheckbox, todoTitle, todoDescription, todoPriority, todoDueDate, todoEditBtn, todoDeleteBtn);
