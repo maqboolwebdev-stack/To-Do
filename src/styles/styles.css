@@ -128,6 +128,9 @@ button {
   border-left: 3px solid transparent;
   width: 90%;
   transition: all .30s ease;
+  overflow-x: auto;
+  scrollbar-color: aliceblue #0d0d0d;
+  scrollbar-width: thin;
 }
 
 .project-name {
