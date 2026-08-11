@@ -15,6 +15,8 @@ export function renderProjects() {
         projectName.classList = 'project-name';
         projectDeleteBtn.classList = 'project-delete-btn';
 
+        projectDeleteBtn.dataset.id = project.id;
+
         projectName.textContent = project.name;
         projectDeleteBtn.textContent = 'Delete';
 

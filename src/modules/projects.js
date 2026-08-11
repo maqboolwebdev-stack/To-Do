@@ -2,6 +2,7 @@ class Project {
     constructor(name) {
         this.name = name;
         this.todo = [];
+        this.id = crypto.randomUUID();
     }
 }
 

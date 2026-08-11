@@ -4,6 +4,16 @@ import { renderTodos } from './render-todos.js';
 
 export let activeProject = projects.length > 0 ? projects[0] : null;
 
+//  This function will be used to update the active project from other files.
+export function setActiveProject(project) {
+  activeProject = project;
+  if (activeProject) {
+    renderTodos(activeProject);
+  } else {
+    renderTodos({ todo: [] });
+  }
+}
+
 projectContainer.addEventListener('click', function (e) {
   const projectElement = e.target.closest('.project-name');
 
@@ -20,14 +30,12 @@ projectContainer.addEventListener('click', function (e) {
 
     const clickedProjectName = projectElement.textContent;
 
-    activeProject = projects.find(
+    const foundProject = projects.find(
       (project) => project.name === clickedProjectName,
     );
 
-    console.log(activeProject);
-
-    if (activeProject) {
-      renderTodos(activeProject);
+    if (foundProject) {
+      setActiveProject(foundProject); // Set the active project for the function.
     }
   }
 });
