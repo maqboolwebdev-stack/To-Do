@@ -11,6 +11,7 @@ class Todo {
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
+        this.id = crypto.randomUUID();
     }
 }
 
@@ -40,4 +41,4 @@ createTodo(projects[1], 'milk', 'I like drinking very much. Milk is a good sourc
 createTodo(projects[1], 'homework', 'bla bla bla bal bal bla bla bla bla', '23/3/2027', 'High',);
 createTodo(projects[2], 'curd', 'Curd same as Milk but curd have good bacteria that support gut health.', '23/3/2027', 'medium',);
 
-export {projects, createProject};
+export {projects, createProject, createTodo};
