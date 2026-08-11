@@ -40,6 +40,7 @@ export function renderTodos(project) {
     todoDeleteBtn.textContent = 'Delete';
 
     todoDeleteBtn.dataset.id = todo.id;
+    todoEditBtn.dataset.id = todo.id;
     todoCheckbox.dataset.id = todo.id;  
     todoCheckbox.checked = todo.isCompleted;
 
