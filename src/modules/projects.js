@@ -33,14 +33,21 @@ function createTodo(project, title, description, dueDate, priority) {
 }
 
 createProject('Default Project');
-createProject('Office');
-createProject('Do the best');
 
-createTodo(projects[0], 'cooking', 'I love cooking, I am great in cooking.', '23/3/2027', 'low',);
-createTodo(projects[0], 'gym', 'Doing Gym is the best habit for our health.', '23/3/2027', 'medium',);
+createTodo(
+  projects[0], 
+  'Prepare Chicken Biryani Recipe', 
+  'Gather ingredients, marinate the chicken with yogurt and spices, and layer with aromatic basmati rice.', 
+  '8/11/2026', 
+  'low'
+);
 
-createTodo(projects[1], 'milk', 'I like drinking very much. Milk is a good source of good fats protein and lots of vitamins and minerals', '23/3/2027', 'medium',);
-createTodo(projects[1], 'homework', 'bla bla bla bal bal bla bla bla bla', '23/3/2027', 'High',);
-createTodo(projects[2], 'curd', 'Curd same as Milk but curd have good bacteria that support gut health.', '23/3/2027', 'medium',);
+createTodo(
+  projects[0], 
+  'Evening Workout Session', 
+  'Focus on chest and triceps: Bench Press (3 sets of 12 reps), Incline Dumbbell Press, and Tricep Pushdowns.', 
+  '8/11/2026', 
+  'medium'
+);
 
 export {projects, createProject, createTodo};
