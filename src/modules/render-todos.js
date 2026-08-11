@@ -40,6 +40,8 @@ export function renderTodos(project) {
     todoDeleteBtn.textContent = 'Delete';
 
     todoDeleteBtn.dataset.id = todo.id;
+    todoCheckbox.dataset.id = todo.id;  
+    todoCheckbox.checked = todo.isCompleted;
 
     todoPriority.append(selectPriority);
     todoContainer.append(todoCheckbox, todoTitle, todoDescription, todoPriority, todoDueDate, todoEditBtn, todoDeleteBtn);

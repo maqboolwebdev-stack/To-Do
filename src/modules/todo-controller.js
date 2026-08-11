@@ -16,4 +16,23 @@ todoSide.addEventListener('click', function(e) {
       renderTodos(activeProject);
     }
   }
+
+  if(e.target.classList.contains('todo-checkbox')) {
+    const todoId = e.target.dataset.id; // Like button ID also necessary
+    const todo = activeProject.todo.find(t => t.id == todoId);
+
+    if(todo) {
+      // Toggle logic
+      todo.isCompleted = !todo.isCompleted; // Data update karo
+      
+      // UI update (strikethrough)
+      const container = e.target.closest('.todos');
+      if(todo.isCompleted) {
+          container.classList.add('strike-through');
+      } else {
+        container.classList.remove('strike-through');
+
+      }
+    }
+  }
 });

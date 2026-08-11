@@ -82,3 +82,9 @@
 .btn-delete:hover {
   border: 1px solid red;
 }
+
+.todos.strike-through .todo-title,
+.todos.strike-through .todo-desc {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
