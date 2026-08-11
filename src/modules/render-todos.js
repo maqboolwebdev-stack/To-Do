@@ -48,7 +48,6 @@ export function renderTodos(project) {
     todoContainer.append(todoCheckbox, todoTitle, todoDescription, todoPriority, todoDueDate, todoEditBtn, todoDeleteBtn);
     todoSide.append(todoContainer);
 
-    console.log(todo.title);
   })
 
 }
