@@ -43,7 +43,7 @@ export function openTodoDialog(todoToEdit = null) {
 
             <div class="dialog-actions">
                 <button type="button" class="btn close-btn">Close</button>
-                <button type="button" class="btn save-btn">${saveBtnText}</button>
+                <button type="submit" class="btn save-btn">${saveBtnText}</button>
             </div>
         </form>
     </div>
