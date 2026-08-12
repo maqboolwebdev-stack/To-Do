@@ -16,7 +16,7 @@ export function openTodoDialog(todoToEdit = null) {
     <div class="dialog-container">
         <div class="dialog-header">${headerText}</div>
         
-        <form method="dialog">
+        <form method="dialog" id="todoForm">
             <div class="form-group">
                 <label for="title">Title<span class="required">*</span></label>
                 <input type="text" id="title" class="form-control" placeholder="Enter task title" required>
@@ -51,7 +51,7 @@ export function openTodoDialog(todoToEdit = null) {
   document.body.append(dialog);
 
   const closeBtn = dialog.querySelector('.close-btn');
-  const saveBtn = dialog.querySelector('.save-btn');
+  const form = dialog.querySelector('#todoForm');
   const title = dialog.querySelector('#title');
   const description = dialog.querySelector('#description');
   const dueDate = dialog.querySelector('#dueDate');
@@ -70,22 +70,37 @@ export function openTodoDialog(todoToEdit = null) {
     dialog.remove();
   });
 
-  saveBtn.addEventListener('click', function () {
-    if (!title.value || !dueDate.value) return;
+  // Attaching a validator to the form submission event will prevent the dialog from closing without validation.
+  form.addEventListener('submit', function (e) {
+    const trimmedTitle = title.value.trim();
+    const trimmedDueDate = dueDate.value.trim();
+    const trimmedDesc = description.value.trim();
+
+    if (trimmedTitle === '' || trimmedDueDate === '') {
+      e.preventDefault(); 
+      return;
+    }
 
     if (todoToEdit) {
-      // update the old todo values
-      todoToEdit.title = title.value;
-      todoToEdit.description = description.value;
-      todoToEdit.dueDate = dueDate.value;
+      if (trimmedTitle === '' && trimmedDesc === '') {
+        e.preventDefault();
+        return;
+      }
+    }
+
+    if (todoToEdit) {
+      // update the old todo values (trimmed values save karein taake spaces save na hon)
+      todoToEdit.title = trimmedTitle;
+      todoToEdit.description = trimmedDesc;
+      todoToEdit.dueDate = trimmedDueDate;
       todoToEdit.priority = priority.value;
     } else {
       // Create a new todo
       createTodo(
         activeProject,
-        title.value,
-        description.value,
-        dueDate.value,
+        trimmedTitle,
+        trimmedDesc,
+        trimmedDueDate,
         priority.value
       );
     }
