@@ -6,8 +6,6 @@ dialog {
   max-width: 400px;
   background-color: transparent;
   color: aliceblue;
-  scrollbar-color: aliceblue #0d0d0d;
-  scrollbar-width: thin;
 }
 
 dialog::backdrop {
@@ -16,6 +14,12 @@ dialog::backdrop {
 
 .dialog-container {
   padding: 1.5rem;
+}
+
+textarea.form-control,
+dialog {
+  scrollbar-color: aliceblue #0d0d0d;
+  scrollbar-width: thin;
 }
 
 .dialog-header {
@@ -56,11 +60,6 @@ dialog::backdrop {
 textarea.form-control {
   resize: vertical;
   height: 5rem;
-}
-
-textarea.form-control {
-  scrollbar-color: aliceblue #0d0d0d;
-  scrollbar-width: thin;
 }
 
 .dialog-actions {
