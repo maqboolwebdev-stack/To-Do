@@ -39,6 +39,14 @@ function openProjectDialog() {
   });
 
   dialog.showModal();
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (dialog) {
+        dialog.remove();
+      }
+    }
+  });
 }
 
 addProjectBtn.addEventListener('click', openProjectDialog);
