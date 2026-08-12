@@ -10,5 +10,5 @@ import './styles/todos.css';
 import './modules/render-todos.js';
 import './modules/todos-dialog.js';
 import './styles/todo-dialog.css';
-import './modules/todo-controller.js'
+import './modules/todo-controller.js';
 import './modules/project-controller.js';

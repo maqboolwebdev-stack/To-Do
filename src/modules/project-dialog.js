@@ -1,5 +1,5 @@
 import { createProject } from './projects.js';
-import { renderProjects } from './projects-ui.js'
+import { renderProjects } from './projects-ui.js';
 
 const addProjectBtn = document.querySelector('#project-add-btn');
 
@@ -40,6 +40,5 @@ function openProjectDialog() {
 
   dialog.showModal();
 }
-
 
 addProjectBtn.addEventListener('click', openProjectDialog);

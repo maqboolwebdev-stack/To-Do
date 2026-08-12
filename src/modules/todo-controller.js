@@ -3,7 +3,6 @@ import { activeProject } from './project-active.js';
 import { openTodoDialog } from './todos-dialog.js';
 
 todoSide.addEventListener('click', function (e) {
-  
   //  Delete Logic
   if (e.target.classList.contains('btn-delete')) {
     const todoId = e.target.dataset.id;
@@ -17,11 +16,11 @@ todoSide.addEventListener('click', function (e) {
 
   //  Checkbox & Strikethrough Logic
   if (e.target.classList.contains('todo-checkbox')) {
-    const todoId = e.target.dataset.id; 
+    const todoId = e.target.dataset.id;
     const todo = activeProject.todo.find((t) => t.id == todoId);
 
     if (todo) {
-      todo.isCompleted = !todo.isCompleted; 
+      todo.isCompleted = !todo.isCompleted;
 
       const container = e.target.closest('.todos');
       if (todo.isCompleted) {

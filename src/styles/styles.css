@@ -127,7 +127,7 @@ button {
   padding: 0.1rem 0.5rem;
   border-left: 3px solid transparent;
   width: 90%;
-  transition: all .30s ease;
+  transition: all 0.3s ease;
   overflow-x: auto;
   scrollbar-color: aliceblue #0d0d0d;
   scrollbar-width: thin;
@@ -137,8 +137,7 @@ button {
   font-family: 'glory', sans-serif;
   font-size: 1.2rem;
   cursor: pointer;
-  transition: all .30s ease;
-
+  transition: all 0.3s ease;
 }
 
 .project-name:hover {

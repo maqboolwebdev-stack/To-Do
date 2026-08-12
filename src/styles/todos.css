@@ -85,6 +85,6 @@
 
 .todos.strike-through .todo-title,
 .todos.strike-through .todo-desc {
-    text-decoration: line-through;
-    opacity: 0.6;
+  text-decoration: line-through;
+  opacity: 0.6;
 }

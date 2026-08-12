@@ -21,8 +21,8 @@ dialog::backdrop {
 }
 
 .project-input {
-  padding: .625rem .75rem;
-  background: #2a2a2a;  
+  padding: 0.625rem 0.75rem;
+  background: #2a2a2a;
   border: 1px solid #3a3a3a;
   color: aliceblue;
   font-size: 1rem;

@@ -81,7 +81,13 @@ export function openTodoDialog(todoToEdit = null) {
       todoToEdit.priority = priority.value;
     } else {
       // Create a new todo
-      createTodo(activeProject, title.value, description.value, dueDate.value, priority.value);
+      createTodo(
+        activeProject,
+        title.value,
+        description.value,
+        dueDate.value,
+        priority.value
+      );
     }
 
     renderTodos(activeProject);

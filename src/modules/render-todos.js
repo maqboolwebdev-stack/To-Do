@@ -1,13 +1,9 @@
-import { activeProject } from "./project-active.js";
-
 export const todoSide = document.querySelector('.todos-side');
 
 export function renderTodos(project) {
   todoSide.innerHTML = '';
 
-  
-  project.todo.forEach(todo => {
-
+  project.todo.forEach((todo) => {
     const todoContainer = document.createElement('div');
     const todoCheckbox = document.createElement('input');
     const todoTitle = document.createElement('div');
@@ -18,7 +14,7 @@ export function renderTodos(project) {
     const todoEditBtn = document.createElement('button');
     const todoDeleteBtn = document.createElement('button');
 
-    todoCheckbox.type = 'checkbox'
+    todoCheckbox.type = 'checkbox';
 
     todoContainer.classList = 'todos';
     todoCheckbox.classList = 'todo-checkbox';
@@ -41,13 +37,19 @@ export function renderTodos(project) {
 
     todoDeleteBtn.dataset.id = todo.id;
     todoEditBtn.dataset.id = todo.id;
-    todoCheckbox.dataset.id = todo.id;  
+    todoCheckbox.dataset.id = todo.id;
     todoCheckbox.checked = todo.isCompleted;
 
     todoPriority.append(selectPriority);
-    todoContainer.append(todoCheckbox, todoTitle, todoDescription, todoPriority, todoDueDate, todoEditBtn, todoDeleteBtn);
+    todoContainer.append(
+      todoCheckbox,
+      todoTitle,
+      todoDescription,
+      todoPriority,
+      todoDueDate,
+      todoEditBtn,
+      todoDeleteBtn
+    );
     todoSide.append(todoContainer);
-
-  })
-
+  });
 }

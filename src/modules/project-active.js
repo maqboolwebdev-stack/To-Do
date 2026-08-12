@@ -31,7 +31,7 @@ projectContainer.addEventListener('click', function (e) {
     const clickedProjectName = projectElement.textContent;
 
     const foundProject = projects.find(
-      (project) => project.name === clickedProjectName,
+      (project) => project.name === clickedProjectName
     );
 
     if (foundProject) {
