@@ -24,8 +24,7 @@ function openProjectDialog() {
   const ProjectInput = dialog.querySelector('.project-input');
 
   saveBtn.addEventListener('click', function () {
-
-    if(ProjectInput.value.trim() === '') return;
+    if (ProjectInput.value.trim() === '') return;
 
     const projectName = ProjectInput.value;
 

@@ -71,7 +71,7 @@ export function openTodoDialog(todoToEdit = null) {
     dialog.remove();
   });
 
-updatePriorityColor(priority);
+  updatePriorityColor(priority);
   priority.addEventListener('change', updatePriorityColor);
 
   // Attaching a validator to the form submission event will prevent the dialog from closing without validation.
@@ -81,7 +81,7 @@ updatePriorityColor(priority);
     const trimmedDesc = description.value.trim();
 
     if (trimmedTitle === '' || trimmedDueDate === '') {
-      e.preventDefault(); 
+      e.preventDefault();
       return;
     }
 

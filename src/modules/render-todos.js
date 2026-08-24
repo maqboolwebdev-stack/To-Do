@@ -1,6 +1,6 @@
 export const todoSide = document.querySelector('.todos-side');
 
-import { priorityColor } from "./priority-color.js";
+import { priorityColor } from './priority-color.js';
 
 export function renderTodos(project) {
   todoSide.innerHTML = '';

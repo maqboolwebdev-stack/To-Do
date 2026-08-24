@@ -83,8 +83,7 @@
   border: 1px solid red;
 }
 
-.todos.strike-through .todo-title,
-.todos.strike-through .todo-desc {
+.todos.strike-through *:not(.btn-delete) {
   text-decoration: line-through;
   opacity: 0.6;
 }
