@@ -1,6 +1,7 @@
 import { activeProject } from './project-active.js';
 import { createTodo } from './projects.js';
 import { renderTodos } from './render-todos.js';
+import { updatePriorityColor } from './priority-color.js';
 
 const addTodo = document.querySelector('.todo-btn');
 
@@ -18,7 +19,7 @@ export function openTodoDialog(todoToEdit = null) {
         
         <form method="dialog" id="todoForm">
             <div class="form-group">
-                <label for="title">Title<span class="required">*</span></label>
+                <label for="title">Title:<span class="required">*</span></label>
                 <input type="text" id="title" class="form-control" placeholder="Enter task title" required>
             </div>
 
@@ -28,16 +29,16 @@ export function openTodoDialog(todoToEdit = null) {
             </div>
 
             <div class="form-group">
-                <label for="dueDate">Due Date<span class="required">*</span></label>
+                <label for="dueDate">Due Date:<span class="required">*</span></label>
                 <input type="date" id="dueDate" class="form-control" required>
             </div>
 
             <div class="form-group">
-                <label for="priority">Priority</label>
+                <label for="priority">Priority:</label>
                 <select id="priority" class="form-control">
-                    <option value="low">Low</option>
-                    <option value="medium" selected>Medium</option>
-                    <option value="high">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium" selected>Medium</option>
+                    <option value="High">High</option>
                 </select>
             </div>
 
@@ -69,6 +70,9 @@ export function openTodoDialog(todoToEdit = null) {
     dialog.close();
     dialog.remove();
   });
+
+updatePriorityColor(priority);
+  priority.addEventListener('change', updatePriorityColor);
 
   // Attaching a validator to the form submission event will prevent the dialog from closing without validation.
   form.addEventListener('submit', function (e) {

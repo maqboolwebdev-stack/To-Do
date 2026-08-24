@@ -117,3 +117,7 @@ textarea.form-control {
 input[type='date']::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
+
+#priority option:nth-child(1) { color: rgb(0, 255, 0); } 
+#priority option:nth-child(2) { color: orange; } 
+#priority option:nth-child(3) { color: red; }   

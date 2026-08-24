@@ -1,5 +1,7 @@
 export const todoSide = document.querySelector('.todos-side');
 
+import { priorityColor } from "./priority-color.js";
+
 export function renderTodos(project) {
   todoSide.innerHTML = '';
 
@@ -50,6 +52,9 @@ export function renderTodos(project) {
       todoEditBtn,
       todoDeleteBtn
     );
+
+    priorityColor(selectPriority);
+
     todoSide.append(todoContainer);
   });
 }

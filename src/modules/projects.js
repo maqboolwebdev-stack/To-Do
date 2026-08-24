@@ -38,7 +38,7 @@ createTodo(
   'Prepare Chicken Biryani Recipe',
   'Gather ingredients, marinate the chicken with yogurt and spices, and layer with aromatic basmati rice.',
   '8/11/2026',
-  'low'
+  'Low'
 );
 
 createTodo(
@@ -46,7 +46,7 @@ createTodo(
   'Evening Workout Session',
   'Focus on chest and triceps: Bench Press (3 sets of 12 reps), Incline Dumbbell Press, and Tricep Pushdowns.',
   '8/11/2026',
-  'medium'
+  'Medium'
 );
 
 export { projects, createProject, createTodo };
