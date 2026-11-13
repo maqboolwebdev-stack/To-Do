@@ -28,7 +28,7 @@ export function setActiveProject(project) {
 
 projectContainer.addEventListener('click', function (e) {
   const projectWrapper = e.target.closest('.dynamic-projects');
-  if (projectWrapper && !e.target.closest('.project-delete-btn')) {
+  if (projectWrapper && !e.target.closest('button')) {
     const foundProject = projects.find(
       (project) => project.id === projectWrapper.dataset.id
     );

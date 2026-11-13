@@ -2,6 +2,7 @@ import { projectContainer, renderProjects } from './projects-ui.js';
 import { projects, saveProjects } from './projects.js';
 import { activeProject, setActiveProject } from './project-active.js';
 import { confirmProjectDelete } from './project-delete-confirm.js';
+import { openProjectDialog } from './project-dialog.js';
 
 function deleteProject(project) {
   const projectIndex = projects.findIndex((item) => item.id === project.id);
@@ -17,6 +18,13 @@ function deleteProject(project) {
 }
 
 projectContainer.addEventListener('click', function (e) {
+  const editButton = e.target.closest('.project-edit-btn');
+  if (editButton) {
+    const project = projects.find((item) => item.id === editButton.dataset.id);
+    if (project) openProjectDialog(project);
+    return;
+  }
+
   const deleteButton = e.target.closest('.project-delete-btn');
   if (!deleteButton) return;
 

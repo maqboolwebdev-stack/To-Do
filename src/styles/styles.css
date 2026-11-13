@@ -176,13 +176,26 @@ button {
   color: rgb(0, 255, 0);
 }
 
+.project-edit-btn,
 .project-delete-btn {
   font-size: 0.8rem;
   background-color: transparent;
-  border: 1px solid aliceblue;
   color: aliceblue;
   transition: all;
   font-family: 'glory', sans-serif;
+}
+
+.project-edit-btn {
+  border: 1px solid transparent;
+}
+
+.project-edit-btn:hover {
+  color: rgb(0, 255, 0);
+  border: 1px solid rgb(0, 255, 0);
+}
+
+.project-delete-btn {
+  border: 1px solid aliceblue;
 }
 
 .project-delete-btn:hover {

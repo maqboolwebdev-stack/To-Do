@@ -1,20 +1,21 @@
-import { createProject } from './projects.js';
+import { createProject, saveProjects } from './projects.js';
 import { projectContainer, renderProjects } from './projects-ui.js';
 import { activeProject, setActiveProject } from './project-active.js';
 
 const addProjectBtn = document.querySelector('#project-add-btn');
 
-export function openProjectDialog(onCreated) {
+export function openProjectDialog(projectToEdit = null) {
   const dialog = document.createElement('dialog');
   dialog.className = 'dialog';
+  const isEditing = projectToEdit !== null;
 
   dialog.innerHTML = `
   
-        <h3 class="dialog-heading">Project Name:</h3>
+        <h3 class="dialog-heading">${isEditing ? 'Edit Project Name:' : 'Project Name:'}</h3>
         <input type="text" class="project-input" placeholder="Home Work (e.g)">
         <div class="btns-container">
             <button class="close-btn">Close</button>
-            <button class="save-btn">Save</button>
+            <button class="save-btn">${isEditing ? 'Update project' : 'Save'}</button>
         </div>
     `;
 
@@ -24,18 +25,28 @@ export function openProjectDialog(onCreated) {
   const saveBtn = dialog.querySelector('.save-btn');
   const ProjectInput = dialog.querySelector('.project-input');
 
+  if (projectToEdit) ProjectInput.value = projectToEdit.name;
+
   saveBtn.addEventListener('click', function () {
     if (ProjectInput.value.trim() === '') return;
 
     const projectName = ProjectInput.value.trim();
 
-    const project = createProject(projectName);
+    if (projectToEdit) {
+      projectToEdit.name = projectName;
+      saveProjects();
+    } else {
+      const project = createProject(projectName);
+      if (!activeProject) setActiveProject(project);
+    }
+
     renderProjects();
-    if (!activeProject) setActiveProject(project);
+    if (projectToEdit && activeProject === projectToEdit) {
+      setActiveProject(projectToEdit);
+    }
 
     dialog.close();
     dialog.remove();
-    if (onCreated) onCreated(project);
   });
 
   closeBtn.addEventListener('click', function () {

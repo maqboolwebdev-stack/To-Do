@@ -25,20 +25,24 @@ export function renderProjects() {
   projects.forEach((project) => {
     const dynamicProjects = document.createElement('div');
     const projectName = document.createElement('h4');
+    const projectEditBtn = document.createElement('button');
     const projectDeleteBtn = document.createElement('button');
 
     dynamicProjects.classList.add('dynamic-projects');
     projectName.classList = 'project-name';
+    projectEditBtn.classList = 'project-edit-btn';
     projectDeleteBtn.classList = 'project-delete-btn';
 
     dynamicProjects.dataset.id = project.id;
+    projectEditBtn.dataset.id = project.id;
     projectDeleteBtn.dataset.id = project.id;
     dynamicProjects.classList.toggle('active', project.id === activeProjectId);
 
     projectName.textContent = project.name;
+    projectEditBtn.textContent = 'Edit';
     projectDeleteBtn.textContent = 'Delete';
 
-    dynamicProjects.append(projectName, projectDeleteBtn);
+    dynamicProjects.append(projectName, projectEditBtn, projectDeleteBtn);
 
     projectContainer.append(dynamicProjects);
   });
