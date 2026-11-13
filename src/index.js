@@ -12,3 +12,4 @@ import './modules/todos-dialog.js';
 import './styles/todo-dialog.css';
 import './modules/todo-controller.js';
 import './modules/project-controller.js';
+import './styles/responsive.css';

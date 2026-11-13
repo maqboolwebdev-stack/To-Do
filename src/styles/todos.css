@@ -9,7 +9,7 @@
     'checkbox description description description description'
     'checkbox priority dueDate edit delete';
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
   color: aliceblue;
   padding: 1rem 0;
 }
@@ -25,16 +25,16 @@
 
 .todo-title {
   grid-area: title;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  letter-spacing: 0.0625em;
 }
 
 .todo-desc {
   grid-area: description;
-  font-size: 0.9rem;
+  font-size: clamp(0.875rem, 0.9vw, 1rem);
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffffc3;
-  letter-spacing: 1pxK;
+  letter-spacing: 0.0625em;
 }
 
 .todo-priority,

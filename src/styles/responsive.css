@@ -1,0 +1,160 @@
+@media (max-width: 48rem) {
+  body {
+    padding: clamp(1rem, 2.5vw, 3rem);
+  }
+
+  .main {
+    grid-template-columns: minmax(14rem, 1fr) minmax(0, 4fr);
+  }
+
+  .control-side {
+    gap: clamp(1rem, 1.5vw, 1.75rem);
+  }
+
+  .logo {
+    padding: clamp(1rem, 2vw, 2rem);
+    font-size: clamp(2.25rem, 3.5vw, 4.5rem);
+  }
+
+  .add-btns-container {
+    gap: clamp(0.5rem, 1vw, 1.25rem);
+    padding-inline: clamp(0.5rem, 1.5vw, 1.5rem);
+  }
+
+  .project-btn,
+  .todo-btn,
+  .empty-state-btn {
+    padding: clamp(0.4rem, 0.65vw, 0.75rem)
+      clamp(0.6rem, 1vw, 1.125rem);
+    font-size: clamp(0.875rem, 0.9vw, 1.125rem);
+  }
+
+  .todos-side {
+    padding: clamp(1rem, 2vw, 2.5rem);
+  }
+
+  .projects-heading {
+    font-size: clamp(1.5rem, 2vw, 2.25rem);
+  }
+
+  .dynamic-projects {
+    width: min(92%, 34rem);
+    gap: clamp(0.5rem, 1vw, 1.25rem);
+    padding: clamp(0.25rem, 0.5vw, 0.625rem)
+      clamp(0.5rem, 0.75vw, 0.875rem);
+  }
+
+  .project-name {
+    font-size: clamp(1rem, 1.2vw, 1.4rem);
+  }
+
+  .project-edit-btn,
+  .project-delete-btn {
+    padding: clamp(0.25rem, 0.4vw, 0.5rem)
+      clamp(0.4rem, 0.7vw, 0.75rem);
+    font-size: clamp(0.75rem, 0.8vw, 1rem);
+  }
+
+  .empty-state {
+    gap: clamp(1rem, 1.5vw, 1.75rem);
+  }
+
+  .todos {
+    gap: clamp(0.5rem, 1vw, 1rem);
+    padding-block: clamp(1rem, 1.5vw, 1.75rem);
+  }
+
+  .todo-title {
+    font-size: clamp(1.125rem, 1.4vw, 1.5rem);
+  }
+
+  .todo-desc {
+    font-size: clamp(0.875rem, 1vw, 1.125rem);
+  }
+
+  .todo-priority,
+  .todo-dueDate,
+  .btn {
+    padding: clamp(0.375rem, 0.5vw, 0.625rem);
+  }
+
+  .dialog {
+    padding: clamp(1.25rem, 2.5vw, 2.5rem);
+    gap: clamp(1rem, 1.75vw, 1.75rem);
+  }
+
+  .project-input,
+  .form-control {
+    padding: clamp(0.625rem, 0.8vw, 0.875rem)
+      clamp(0.75rem, 1vw, 1rem);
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+  }
+
+  .dialog-container {
+    padding: clamp(1.25rem, 2vw, 2rem);
+  }
+
+  .dialog-header {
+    font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+  }
+
+  .form-group label {
+    font-size: clamp(1rem, 1.1vw, 1.125rem);
+  }
+
+  .project-delete-confirm {
+    width: min(90vw, 34rem);
+    padding: clamp(1.25rem, 2vw, 2rem);
+  }
+}
+
+@media (max-width: 786px) {
+  .main {
+    width: 90%;
+    height: 90%;
+    max-height: 90vh;
+    max-height: 90dvh;
+  }
+}
+
+@media (min-width: 787px) {
+  .main {
+    width: min(80%, 96rem);
+    height: min(80%, 60rem);
+    max-height: min(80vh, 60rem);
+    max-height: min(80dvh, 60rem);
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 64rem) {
+  .dynamic-projects {
+    gap: clamp(0.25rem, 0.7vw, 0.625rem);
+  }
+
+  .project-name {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .todos {
+    column-gap: clamp(0.375rem, 0.75vw, 0.75rem);
+    grid-template-columns: minmax(1.5rem, 5%) repeat(4, minmax(0, 1fr));
+    grid-template-areas:
+      'checkbox title title title title'
+      'checkbox description description description description'
+      'checkbox priority priority dueDate dueDate'
+      'checkbox edit edit delete delete';
+    grid-template-rows: repeat(4, auto);
+  }
+
+  .todo-priority,
+  .todo-dueDate {
+    padding: 0.25rem 0.375rem;
+    font-size: clamp(0.7rem, 0.85vw, 0.9rem);
+  }
+
+  .todos .btn {
+    padding: 0.3rem clamp(0.35rem, 0.55vw, 0.55rem);
+    font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+  }
+}

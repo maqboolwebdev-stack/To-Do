@@ -1,5 +1,6 @@
 .dialog {
-  margin: 15vh auto;
+  width: min(90vw, 26rem);
+  margin: auto;
   background: transparent;
   border: 1px solid aliceblue;
   padding: 2rem;
@@ -14,10 +15,10 @@ dialog::backdrop {
 
 .dialog-heading {
   color: aliceblue;
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 1.4vw, 1.5rem);
   font-weight: 900;
   margin: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03125em;
 }
 
 .project-input {
@@ -28,8 +29,8 @@ dialog::backdrop {
   font-size: 1rem;
   outline: none;
   transition: all 0.3s ease;
-  letter-spacing: 1px;
-  border-radius: 6px;
+  letter-spacing: 0.0625em;
+  border-radius: 0.375rem;
 }
 
 .project-input:focus {
@@ -74,7 +75,7 @@ dialog::backdrop {
 
 .project-delete-confirm {
   width: min(90vw, 28rem);
-  margin: 20vh auto;
+  margin: auto;
   padding: 1.5rem;
   border: 1px solid aliceblue;
   background-color: #0d0d0d;
@@ -87,7 +88,7 @@ dialog::backdrop {
 .delete-confirm-title {
   margin-bottom: 1rem;
   color: rgb(0, 255, 0);
-  font-size: 1.3rem;
+  font-size: clamp(1.125rem, 1.4vw, 1.5rem);
 }
 
 .delete-confirm-message {
