@@ -3,6 +3,10 @@ import { createProject, createTodo, saveProjects } from './projects.js';
 import { renderTodos, todoSide } from './render-todos.js';
 import { renderProjects } from './projects-ui.js';
 import { updatePriorityColor } from './priority-color.js';
+import {
+  getDateTimeInputValue,
+  getNextAvailableDateTime,
+} from './date-utils.js';
 
 const addTodo = document.querySelector('.todo-btn');
 
@@ -25,7 +29,7 @@ export function openTodoDialog(todoToEdit = null) {
   dialog.innerHTML = `
     <div class="dialog-container">
         <div class="dialog-header">${headerText}</div>
-        
+
         <form method="dialog" id="todoForm">
             <div class="form-group">
                 <label for="title">Title:<span class="required">*</span></label>
@@ -38,8 +42,8 @@ export function openTodoDialog(todoToEdit = null) {
             </div>
 
             <div class="form-group">
-                <label for="dueDate">Due Date:<span class="required">*</span></label>
-                <input type="date" id="dueDate" class="form-control" required>
+                <label for="dueDate">Due Date and Time:<span class="required">*</span></label>
+                <input type="datetime-local" id="dueDate" class="form-control" required>
             </div>
 
             <div class="form-group">
@@ -68,11 +72,13 @@ export function openTodoDialog(todoToEdit = null) {
   const priority = dialog.querySelector('#priority');
   const saveBtn = dialog.querySelector('.save-btn');
 
+  dueDate.min = getNextAvailableDateTime();
+
   // if edit mode is on then fill the data field with old data/
   if (todoToEdit) {
     title.value = todoToEdit.title;
     description.value = todoToEdit.description;
-    dueDate.value = todoToEdit.dueDate;
+    dueDate.value = getDateTimeInputValue(todoToEdit.dueDate);
     priority.value = todoToEdit.priority;
   }
 
@@ -90,6 +96,11 @@ export function openTodoDialog(todoToEdit = null) {
         enterNavigation[index + 1].focus();
       }
     });
+  });
+
+  dueDate.addEventListener('input', function () {
+    dueDate.min = getNextAvailableDateTime();
+    dueDate.setCustomValidity('');
   });
 
   closeBtn.addEventListener('click', function () {
@@ -112,11 +123,25 @@ export function openTodoDialog(todoToEdit = null) {
     const trimmedTitle = title.value.trim();
     const trimmedDueDate = dueDate.value.trim();
     const trimmedDesc = description.value.trim();
+    const now = new Date();
+    const selectedDueDate = new Date(trimmedDueDate);
+    dueDate.min = getNextAvailableDateTime();
 
-    if (trimmedTitle === '' || trimmedDueDate === '') {
+    if (
+      trimmedTitle === '' ||
+      trimmedDueDate === '' ||
+      Number.isNaN(selectedDueDate.getTime()) ||
+      selectedDueDate <= now
+    ) {
       e.preventDefault();
+      if (!Number.isNaN(selectedDueDate.getTime()) && selectedDueDate <= now) {
+        dueDate.setCustomValidity('Due date and time must be in the future.');
+        dueDate.reportValidity();
+      }
       return;
     }
+
+    dueDate.setCustomValidity('');
 
     if (todoToEdit) {
       if (trimmedTitle === '' && trimmedDesc === '') {

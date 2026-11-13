@@ -27,6 +27,9 @@ todoSide.addEventListener('click', function (e) {
 
     if (todo) {
       todo.isCompleted = !todo.isCompleted;
+      if (todo.isCompleted) {
+        todo.completedAt = new Date().toISOString();
+      }
       projectChanged = true;
       renderTodos(activeProject);
     }

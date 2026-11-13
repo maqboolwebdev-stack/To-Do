@@ -143,12 +143,14 @@
       'checkbox title title title title'
       'checkbox description description description description'
       'checkbox priority priority dueDate dueDate'
-      'checkbox edit edit delete delete';
-    grid-template-rows: repeat(4, auto);
+      'checkbox edit edit delete delete'
+      'checkbox completedAt completedAt completedAt completedAt';
+    grid-template-rows: repeat(5, auto);
   }
 
   .todo-priority,
-  .todo-dueDate {
+  .todo-dueDate,
+  .todo-completedAt {
     padding: 0.25rem 0.375rem;
     font-size: clamp(0.7rem, 0.85vw, 0.9rem);
   }

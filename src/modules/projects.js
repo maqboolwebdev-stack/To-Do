@@ -14,6 +14,7 @@ class Todo {
     this.priority = priority;
     this.id = crypto.randomUUID();
     this.isCompleted = false;
+    this.completedAt = null;
   }
 }
 
@@ -55,6 +56,8 @@ function loadProjects() {
       );
       if (typeof todoData.id === 'string') todo.id = todoData.id;
       todo.isCompleted = Boolean(todoData.isCompleted);
+      todo.completedAt =
+        typeof todoData.completedAt === 'string' ? todoData.completedAt : null;
       return todo;
     });
 

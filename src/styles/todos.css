@@ -7,7 +7,8 @@
     'checkbox title title title title'
     'checkbox description description description description'
     'checkbox description description description description'
-    'checkbox priority dueDate edit delete';
+    'checkbox priority dueDate edit delete'
+    'checkbox completedAt completedAt completedAt completedAt';
   align-items: center;
   gap: 0.75rem;
   color: aliceblue;
@@ -51,6 +52,22 @@
 .todo-dueDate {
   grid-area: dueDate;
   justify-self: center;
+}
+
+.todo-completedAt {
+  grid-area: completedAt;
+  justify-self: start;
+  padding: 0.375rem 0.625rem;
+  font-size: 0.875rem;
+  color: #ffffffc3;
+}
+
+.todo-dueDate[data-state='today'] {
+  color: orange;
+}
+
+.todo-dueDate[data-state='overdue'] {
+  color: red;
 }
 
 .btn {
