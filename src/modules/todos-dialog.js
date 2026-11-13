@@ -1,13 +1,19 @@
-import { activeProject } from './project-active.js';
-import { createTodo, saveProjects } from './projects.js';
+import { activeProject, setActiveProject } from './project-active.js';
+import { createProject, createTodo, saveProjects } from './projects.js';
 import { renderTodos, todoSide } from './render-todos.js';
-import { openProjectDialog } from './project-dialog.js';
+import { renderProjects } from './projects-ui.js';
 import { updatePriorityColor } from './priority-color.js';
 
 const addTodo = document.querySelector('.todo-btn');
 
 // Reusable function that Create and Edit handle both.
 export function openTodoDialog(todoToEdit = null) {
+  if (!todoToEdit && !activeProject) {
+    const defaultProject = createProject('Default project');
+    renderProjects();
+    setActiveProject(defaultProject);
+  }
+
   const dialog = document.createElement('dialog');
   dialog.classList = 'todoDialog';
 
@@ -121,11 +127,7 @@ export function openTodoDialog(todoToEdit = null) {
 
 // When "Add Task" button clicked (Create Mode)
 addTodo.addEventListener('click', function () {
-  if (activeProject) {
-    openTodoDialog();
-  } else {
-    openProjectDialog(() => openTodoDialog());
-  }
+  openTodoDialog();
 });
 
 todoSide.addEventListener('click', function (e) {
