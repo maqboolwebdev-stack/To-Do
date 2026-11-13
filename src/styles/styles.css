@@ -172,7 +172,8 @@ button {
   color: rgb(0, 255, 0);
 }
 
-.project-delete-btn {
+.project-delete-btn,
+.project-edit-btn {
   font-size: 0.8rem;
   background-color: transparent;
   border: 1px solid aliceblue;
@@ -188,4 +189,9 @@ button {
 
 .project-delete-btn:active {
   opacity: 0.8;
+}
+
+.project-edit-btn:hover {
+  border: 1px solid rgb(0, 255, 0);
+  color: rgb(0, 255, 0);
 }
