@@ -60,10 +60,12 @@ body {
   place-items: center;
 }
 
-.logo {
+.logo-image {
+  display: block;
+  width: min(100%, 15rem);
+  height: auto;
   padding: 1rem;
-  font-size: clamp(2rem, 3vw, 4rem);
-  color: rgb(0, 255, 0);
+  margin-top: 1rem;
 }
 
 .add-btns-container {
