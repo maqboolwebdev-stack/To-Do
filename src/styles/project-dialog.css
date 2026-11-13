@@ -71,3 +71,61 @@ dialog::backdrop {
 .save-btn:active {
   opacity: 0.8;
 }
+
+.project-delete-confirm {
+  width: min(90vw, 28rem);
+  margin: 20vh auto;
+  padding: 1.5rem;
+  border: 1px solid aliceblue;
+  background-color: #0d0d0d;
+  color: aliceblue;
+  box-shadow:
+    0 0 10px #a3b6b6,
+    0 0 20px #464545;
+}
+
+.delete-confirm-title {
+  margin-bottom: 1rem;
+  color: rgb(0, 255, 0);
+  font-size: 1.3rem;
+}
+
+.delete-confirm-message {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cancel-delete-btn,
+.confirm-delete-btn {
+  padding: 0.4rem 0.8rem;
+  background-color: transparent;
+  font-family: 'glory', sans-serif;
+}
+
+.cancel-delete-btn {
+  border: 1px solid aliceblue;
+  color: aliceblue;
+  transition: all .15s ease;
+}
+
+.confirm-delete-btn {
+  border: 1px solid white;
+  color: red;
+  transition: all .15s ease;
+}
+
+.cancel-delete-btn:hover {
+  border-color: rgb(0, 255, 0);
+  color: rgb(0, 255, 0);
+}
+
+.confirm-delete-btn:hover {
+  border: 1px solid red;
+}

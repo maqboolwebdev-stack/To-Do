@@ -1,23 +1,31 @@
 import { projectContainer, renderProjects } from './projects-ui.js';
 import { projects, saveProjects } from './projects.js';
 import { activeProject, setActiveProject } from './project-active.js';
+import { confirmProjectDelete } from './project-delete-confirm.js';
+
+function deleteProject(project) {
+  const projectIndex = projects.findIndex((item) => item.id === project.id);
+  if (projectIndex === -1) return;
+
+  projects.splice(projectIndex, 1);
+  const nextProject =
+    activeProject === project ? projects[0] || null : activeProject;
+
+  renderProjects();
+  saveProjects();
+  setActiveProject(nextProject);
+}
 
 projectContainer.addEventListener('click', function (e) {
-  if (e.target.classList.contains('project-delete-btn')) {
-    const projectId = e.target.dataset.id;
+  const deleteButton = e.target.closest('.project-delete-btn');
+  if (!deleteButton) return;
 
-    const projectIndex = projects.findIndex((p) => p.id === projectId);
+  const project = projects.find((item) => item.id === deleteButton.dataset.id);
+  if (!project) return;
 
-    if (projectIndex !== -1) {
-      const deletedProject = projects[projectIndex];
-
-      projects.splice(projectIndex, 1);
-
-      const nextProject =
-        activeProject === deletedProject ? projects[0] || null : activeProject;
-      renderProjects();
-      saveProjects();
-      setActiveProject(nextProject);
-    }
+  if (project.todo.length > 0) {
+    confirmProjectDelete(project, () => deleteProject(project));
+  } else {
+    deleteProject(project);
   }
 });

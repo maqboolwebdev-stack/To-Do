@@ -124,6 +124,10 @@ button {
   padding: 1rem;
 }
 
+.empty-state-project-name {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .empty-state-btn {
   cursor: pointer;
   transition: all 0.3s ease;
