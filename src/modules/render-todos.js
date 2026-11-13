@@ -5,6 +5,24 @@ import { priorityColor } from './priority-color.js';
 export function renderTodos(project) {
   todoSide.innerHTML = '';
 
+  if (!project) return;
+
+  if (project.todo.length === 0) {
+    const emptyState = document.createElement('div');
+    const message = document.createElement('p');
+    const addTodoButton = document.createElement('button');
+
+    emptyState.classList.add('empty-state', 'empty-todos-state');
+    message.textContent = `No to-do yet in "${project.name}" project`;
+    addTodoButton.className = 'empty-state-btn';
+    addTodoButton.dataset.action = 'add-todo';
+    addTodoButton.textContent = 'Add to-do';
+
+    emptyState.append(message, addTodoButton);
+    todoSide.append(emptyState);
+    return;
+  }
+
   project.todo.forEach((todo) => {
     const todoContainer = document.createElement('div');
     const todoCheckbox = document.createElement('input');

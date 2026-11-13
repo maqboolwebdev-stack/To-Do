@@ -1,9 +1,10 @@
 import { createProject } from './projects.js';
-import { renderProjects } from './projects-ui.js';
+import { projectContainer, renderProjects } from './projects-ui.js';
+import { activeProject, setActiveProject } from './project-active.js';
 
 const addProjectBtn = document.querySelector('#project-add-btn');
 
-function openProjectDialog() {
+export function openProjectDialog(onCreated) {
   const dialog = document.createElement('dialog');
   dialog.className = 'dialog';
 
@@ -26,13 +27,15 @@ function openProjectDialog() {
   saveBtn.addEventListener('click', function () {
     if (ProjectInput.value.trim() === '') return;
 
-    const projectName = ProjectInput.value;
+    const projectName = ProjectInput.value.trim();
 
-    createProject(projectName);
+    const project = createProject(projectName);
     renderProjects();
+    if (!activeProject) setActiveProject(project);
 
     dialog.close();
     dialog.remove();
+    if (onCreated) onCreated(project);
   });
 
   closeBtn.addEventListener('click', function () {
@@ -51,4 +54,10 @@ function openProjectDialog() {
   });
 }
 
-addProjectBtn.addEventListener('click', openProjectDialog);
+addProjectBtn.addEventListener('click', () => openProjectDialog());
+
+projectContainer.addEventListener('click', function (e) {
+  if (e.target.closest('[data-action="create-project"]')) {
+    openProjectDialog();
+  }
+});
