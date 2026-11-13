@@ -1,5 +1,5 @@
 import { activeProject } from './project-active.js';
-import { createTodo } from './projects.js';
+import { createTodo, saveProjects } from './projects.js';
 import { renderTodos } from './render-todos.js';
 import { updatePriorityColor } from './priority-color.js';
 
@@ -98,6 +98,7 @@ export function openTodoDialog(todoToEdit = null) {
       todoToEdit.description = trimmedDesc;
       todoToEdit.dueDate = trimmedDueDate;
       todoToEdit.priority = priority.value;
+      saveProjects();
     } else {
       // Create a new todo
       createTodo(
@@ -119,5 +120,5 @@ export function openTodoDialog(todoToEdit = null) {
 
 // When "Add Task" button clicked (Create Mode)
 addTodo.addEventListener('click', function () {
-  openTodoDialog();
+  if (activeProject) openTodoDialog();
 });

@@ -1,6 +1,7 @@
 import { projects } from './projects.js';
 
 export const projectContainer = document.querySelector('.projects');
+let activeProjectId = null;
 
 export function renderProjects() {
   projectContainer.innerHTML = '';
@@ -14,7 +15,9 @@ export function renderProjects() {
     projectName.classList = 'project-name';
     projectDeleteBtn.classList = 'project-delete-btn';
 
+    dynamicProjects.dataset.id = project.id;
     projectDeleteBtn.dataset.id = project.id;
+    dynamicProjects.classList.toggle('active', project.id === activeProjectId);
 
     projectName.textContent = project.name;
     projectDeleteBtn.textContent = 'Delete';
@@ -22,6 +25,13 @@ export function renderProjects() {
     dynamicProjects.append(projectName, projectDeleteBtn);
 
     projectContainer.append(dynamicProjects);
+  });
+}
+
+export function markActiveProject(projectId) {
+  activeProjectId = projectId;
+  projectContainer.querySelectorAll('.dynamic-projects').forEach((wrapper) => {
+    wrapper.classList.toggle('active', wrapper.dataset.id === projectId);
   });
 }
 

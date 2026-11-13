@@ -1,5 +1,5 @@
 import { projectContainer, renderProjects } from './projects-ui.js';
-import { projects } from './projects.js';
+import { projects, saveProjects } from './projects.js';
 import { activeProject, setActiveProject } from './project-active.js';
 
 projectContainer.addEventListener('click', function (e) {
@@ -13,12 +13,11 @@ projectContainer.addEventListener('click', function (e) {
 
       projects.splice(projectIndex, 1);
 
-      if (activeProject === deletedProject) {
-        const nextProject = projects.length > 0 ? projects[0] : null;
-        setActiveProject(nextProject);
-      }
-
+      const nextProject =
+        activeProject === deletedProject ? projects[0] || null : activeProject;
       renderProjects();
+      saveProjects();
+      setActiveProject(nextProject);
     }
   }
 });

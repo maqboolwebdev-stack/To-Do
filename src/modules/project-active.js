@@ -1,12 +1,24 @@
 import { projects } from './projects.js';
-import { projectContainer } from './projects-ui.js';
+import { markActiveProject, projectContainer } from './projects-ui.js';
 import { renderTodos } from './render-todos.js';
 
-export let activeProject = projects.length > 0 ? projects[0] : null;
+const ACTIVE_PROJECT_KEY = 'activeProjectId';
+const savedActiveProjectId = localStorage.getItem(ACTIVE_PROJECT_KEY);
+export let activeProject =
+  projects.find((project) => project.id === savedActiveProjectId) ||
+  projects[0] ||
+  null;
 
 //  This function will be used to update the active project from other files.
 export function setActiveProject(project) {
   activeProject = project;
+  markActiveProject(project?.id || null);
+  if (project) {
+    localStorage.setItem(ACTIVE_PROJECT_KEY, project.id);
+  } else {
+    localStorage.removeItem(ACTIVE_PROJECT_KEY);
+  }
+
   if (activeProject) {
     renderTodos(activeProject);
   } else {
@@ -15,31 +27,13 @@ export function setActiveProject(project) {
 }
 
 projectContainer.addEventListener('click', function (e) {
-  const projectElement = e.target.closest('.project-name');
-
-  if (projectElement) {
-    const projectWrapper = projectElement.closest('.dynamic-projects');
-
-    if (projectWrapper) {
-      const allWrappers =
-        projectContainer.querySelectorAll('.dynamic-projects');
-      allWrappers.forEach((wrapper) => wrapper.classList.remove('active'));
-
-      projectWrapper.classList.add('active');
-    }
-
-    const clickedProjectName = projectElement.textContent;
-
+  const projectWrapper = e.target.closest('.dynamic-projects');
+  if (projectWrapper && !e.target.closest('.project-delete-btn')) {
     const foundProject = projects.find(
-      (project) => project.name === clickedProjectName
+      (project) => project.id === projectWrapper.dataset.id
     );
-
-    if (foundProject) {
-      setActiveProject(foundProject); // Set the active project for the function.
-    }
+    if (foundProject) setActiveProject(foundProject);
   }
 });
 
-if (activeProject) {
-  renderTodos(activeProject);
-}
+setActiveProject(activeProject);

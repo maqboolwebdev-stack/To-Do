@@ -19,6 +19,7 @@ export function renderTodos(project) {
     todoCheckbox.type = 'checkbox';
 
     todoContainer.classList = 'todos';
+    todoContainer.classList.toggle('strike-through', todo.isCompleted);
     todoCheckbox.classList = 'todo-checkbox';
     todoTitle.classList = 'todo-title';
     todoDescription.classList = 'todo-desc';

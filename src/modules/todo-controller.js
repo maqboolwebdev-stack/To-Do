@@ -1,8 +1,13 @@
 import { renderTodos, todoSide } from './render-todos.js';
 import { activeProject } from './project-active.js';
 import { openTodoDialog } from './todos-dialog.js';
+import { saveProjects } from './projects.js';
 
 todoSide.addEventListener('click', function (e) {
+  if (!activeProject) return;
+
+  let projectChanged = false;
+
   //  Delete Logic
   if (e.target.classList.contains('btn-delete')) {
     const todoId = e.target.dataset.id;
@@ -11,6 +16,7 @@ todoSide.addEventListener('click', function (e) {
     if (todoIndex !== -1) {
       activeProject.todo.splice(todoIndex, 1);
       renderTodos(activeProject);
+      projectChanged = true;
     }
   }
 
@@ -21,6 +27,7 @@ todoSide.addEventListener('click', function (e) {
 
     if (todo) {
       todo.isCompleted = !todo.isCompleted;
+      projectChanged = true;
 
       const container = e.target.closest('.todos');
       if (todo.isCompleted) {
@@ -40,4 +47,6 @@ todoSide.addEventListener('click', function (e) {
       openTodoDialog(todo); // From here passed the todo for edit
     }
   }
+
+  if (projectChanged) saveProjects();
 });
