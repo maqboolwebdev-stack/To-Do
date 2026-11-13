@@ -12,25 +12,39 @@ export function openProjectDialog(projectToEdit = null) {
   dialog.innerHTML = `
   
         <h3 class="dialog-heading">${isEditing ? 'Edit Project Name:' : 'Project Name:'}</h3>
-        <input type="text" class="project-input" placeholder="Home Work (e.g)">
-        <div class="btns-container">
-            <button class="close-btn">Close</button>
-            <button class="save-btn">${isEditing ? 'Update project' : 'Save'}</button>
-        </div>
+        <form class="project-form" novalidate>
+            <input type="text" class="project-input" placeholder="Home Work (e.g)" aria-describedby="project-error">
+            <p class="project-error" id="project-error" role="alert" hidden></p>
+            <div class="btns-container">
+                <button type="button" class="close-btn">Close</button>
+                <button type="submit" class="save-btn">${isEditing ? 'Update project' : 'Save'}</button>
+            </div>
+        </form>
     `;
 
   document.body.append(dialog);
 
   const closeBtn = dialog.querySelector('.close-btn');
-  const saveBtn = dialog.querySelector('.save-btn');
-  const ProjectInput = dialog.querySelector('.project-input');
+  const form = dialog.querySelector('.project-form');
+  const projectInput = dialog.querySelector('.project-input');
+  const projectError = dialog.querySelector('.project-error');
 
-  if (projectToEdit) ProjectInput.value = projectToEdit.name;
+  if (projectToEdit) projectInput.value = projectToEdit.name;
 
-  saveBtn.addEventListener('click', function () {
-    if (ProjectInput.value.trim() === '') return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const projectName = projectInput.value.trim();
 
-    const projectName = ProjectInput.value.trim();
+    if (projectName === '') {
+      projectError.textContent = 'Project name is required.';
+      projectError.hidden = false;
+      projectInput.setAttribute('aria-invalid', 'true');
+      projectInput.focus();
+      return;
+    }
+
+    projectError.hidden = true;
+    projectInput.removeAttribute('aria-invalid');
 
     if (projectToEdit) {
       projectToEdit.name = projectName;
@@ -46,23 +60,21 @@ export function openProjectDialog(projectToEdit = null) {
     }
 
     dialog.close();
-    dialog.remove();
   });
 
   closeBtn.addEventListener('click', function () {
     dialog.close();
-    dialog.remove();
   });
 
-  dialog.showModal();
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      if (dialog) {
-        dialog.remove();
-      }
+  projectInput.addEventListener('input', function () {
+    if (projectInput.value.trim() !== '') {
+      projectError.hidden = true;
+      projectInput.removeAttribute('aria-invalid');
     }
   });
+
+  dialog.addEventListener('close', () => dialog.remove(), { once: true });
+  dialog.showModal();
 }
 
 addProjectBtn.addEventListener('click', () => openProjectDialog());

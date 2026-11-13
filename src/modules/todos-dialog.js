@@ -66,6 +66,7 @@ export function openTodoDialog(todoToEdit = null) {
   const description = dialog.querySelector('#description');
   const dueDate = dialog.querySelector('#dueDate');
   const priority = dialog.querySelector('#priority');
+  const saveBtn = dialog.querySelector('.save-btn');
 
   // if edit mode is on then fill the data field with old data/
   if (todoToEdit) {
@@ -74,6 +75,22 @@ export function openTodoDialog(todoToEdit = null) {
     dueDate.value = todoToEdit.dueDate;
     priority.value = todoToEdit.priority;
   }
+
+  const enterNavigation = [title, description, dueDate, priority, saveBtn];
+  enterNavigation.slice(0, -1).forEach((field, index) => {
+    field.addEventListener('keydown', function (e) {
+      if (
+        e.key === 'Enter' &&
+        !e.shiftKey &&
+        !e.ctrlKey &&
+        !e.altKey &&
+        !e.metaKey
+      ) {
+        e.preventDefault();
+        enterNavigation[index + 1].focus();
+      }
+    });
+  });
 
   closeBtn.addEventListener('click', function () {
     dialog.close();

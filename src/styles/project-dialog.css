@@ -21,6 +21,12 @@ dialog::backdrop {
   letter-spacing: 0.03125em;
 }
 
+.project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .project-input {
   padding: 0.625rem 0.75rem;
   background: #2a2a2a;
@@ -35,6 +41,12 @@ dialog::backdrop {
 
 .project-input:focus {
   border-color: rgb(0, 255, 0);
+}
+
+.project-error {
+  margin: 0;
+  color: red;
+  font-size: 0.875rem;
 }
 
 .btns-container {
