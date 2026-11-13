@@ -8,6 +8,8 @@ const addTodo = document.querySelector('.todo-btn');
 
 // Reusable function that Create and Edit handle both.
 export function openTodoDialog(todoToEdit = null) {
+  if (todoToEdit?.isCompleted) return;
+
   if (!todoToEdit && !activeProject) {
     const defaultProject = createProject('Default project');
     renderProjects();
@@ -83,6 +85,13 @@ export function openTodoDialog(todoToEdit = null) {
 
   // Attaching a validator to the form submission event will prevent the dialog from closing without validation.
   form.addEventListener('submit', function (e) {
+    if (todoToEdit?.isCompleted) {
+      e.preventDefault();
+      dialog.close();
+      dialog.remove();
+      return;
+    }
+
     const trimmedTitle = title.value.trim();
     const trimmedDueDate = dueDate.value.trim();
     const trimmedDesc = description.value.trim();

@@ -72,6 +72,11 @@
   border: 1px solid rgb(0, 255, 0);
 }
 
+.btn-edit:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 .btn-delete {
   grid-area: delete;
   border: 1px solid transparent;

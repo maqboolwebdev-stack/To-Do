@@ -60,6 +60,7 @@ export function renderTodos(project) {
     todoDeleteBtn.dataset.id = todo.id;
     todoEditBtn.dataset.id = todo.id;
     todoCheckbox.dataset.id = todo.id;
+    todoEditBtn.disabled = todo.isCompleted;
     todoCheckbox.checked = todo.isCompleted;
 
     todoPriority.append(selectPriority);

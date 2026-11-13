@@ -28,13 +28,7 @@ todoSide.addEventListener('click', function (e) {
     if (todo) {
       todo.isCompleted = !todo.isCompleted;
       projectChanged = true;
-
-      const container = e.target.closest('.todos');
-      if (todo.isCompleted) {
-        container.classList.add('strike-through');
-      } else {
-        container.classList.remove('strike-through');
-      }
+      renderTodos(activeProject);
     }
   }
 
@@ -43,7 +37,7 @@ todoSide.addEventListener('click', function (e) {
     const todoId = e.target.dataset.id;
     const todo = activeProject.todo.find((t) => t.id == todoId);
 
-    if (todo) {
+    if (todo && !todo.isCompleted) {
       openTodoDialog(todo); // From here passed the todo for edit
     }
   }
