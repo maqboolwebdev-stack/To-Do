@@ -190,28 +190,34 @@ button {
   font-family: 'glory', sans-serif;
 }
 
-.dynamic-projects .project-edit-btn {
+.dynamic-projects .project-edit-btn,
+.dynamic-projects .project-delete-btn {
   width: 1.2rem;
   height: 1.2rem;
   padding: 0;
   border: 0;
   background-color: currentColor;
-  mask: url('../images/edit-button.svg') center / contain no-repeat;
-  -webkit-mask: url('../images/edit-button.svg') center / contain no-repeat;
   opacity: 0;
   pointer-events: none;
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 
-.dynamic-projects:hover .project-edit-btn,
-.dynamic-projects:focus-within .project-edit-btn {
-  opacity: 1;
-  pointer-events: auto;
+.dynamic-projects .project-edit-btn {
+  mask: url('../images/edit-button.svg') center / contain no-repeat;
+  -webkit-mask: url('../images/edit-button.svg') center / contain no-repeat;
 }
 
-.project-delete-btn:hover {
-  color: red;
-  border: 1px solid red;
+.dynamic-projects .project-delete-btn {
+  mask: url('../images/delete-button.svg') center / contain no-repeat;
+  -webkit-mask: url('../images/delete-button.svg') center / contain no-repeat;
+}
+
+.dynamic-projects:hover .project-edit-btn,
+.dynamic-projects:focus-within .project-edit-btn,
+.dynamic-projects:hover .project-delete-btn,
+.dynamic-projects:focus-within .project-delete-btn {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .project-delete-btn:active {
@@ -220,6 +226,10 @@ button {
 
 .project-edit-btn:hover {
   color: rgb(0, 255, 0);
+}
+
+.project-delete-btn:hover {
+  color: red;
 }
 
 .project-edit-btn:focus-visible {

@@ -39,13 +39,15 @@ export function renderProjects() {
     projectEditBtn.dataset.id = project.id;
     projectDeleteBtn.dataset.id = project.id;
     projectEditBtn.type = 'button';
+    projectDeleteBtn.type = 'button';
     projectEditBtn.setAttribute('aria-label', `Edit ${project.name}`);
+    projectDeleteBtn.setAttribute('aria-label', `Delete ${project.name}`);
     projectEditBtn.title = 'Rename the project';
+    projectDeleteBtn.title = 'Delete the project';
     dynamicProjects.classList.toggle('active', project.id === activeProjectId);
 
     projectName.textContent = project.name;
     projectActions.append(projectEditBtn, projectDeleteBtn);
-    projectDeleteBtn.textContent = 'Delete';
 
     dynamicProjects.append(projectName, projectActions);
 
