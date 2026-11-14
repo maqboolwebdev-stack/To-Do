@@ -163,6 +163,12 @@ button {
   scrollbar-width: thin;
 }
 
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .project-name {
   font-family: 'glory', sans-serif;
   font-size: 1.2rem;
@@ -184,6 +190,25 @@ button {
   font-family: 'glory', sans-serif;
 }
 
+.dynamic-projects .project-edit-btn {
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0;
+  border: 0;
+  background-color: currentColor;
+  mask: url('../images/edit-button.svg') center / contain no-repeat;
+  -webkit-mask: url('../images/edit-button.svg') center / contain no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.dynamic-projects:hover .project-edit-btn,
+.dynamic-projects:focus-within .project-edit-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .project-delete-btn:hover {
   color: red;
   border: 1px solid red;
@@ -194,6 +219,9 @@ button {
 }
 
 .project-edit-btn:hover {
-  border: 1px solid rgb(0, 255, 0);
   color: rgb(0, 255, 0);
+}
+
+.project-edit-btn:focus-visible {
+  opacity: 1;
 }

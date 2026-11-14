@@ -27,22 +27,26 @@ export function renderProjects() {
     const projectName = document.createElement('h4');
     const projectEditBtn = document.createElement('button');
     const projectDeleteBtn = document.createElement('button');
+    const projectActions = document.createElement('div');
 
     dynamicProjects.classList.add('dynamic-projects');
     projectName.classList = 'project-name';
     projectEditBtn.classList = 'project-edit-btn';
     projectDeleteBtn.classList = 'project-delete-btn';
+    projectActions.classList.add('project-actions');
 
     dynamicProjects.dataset.id = project.id;
     projectEditBtn.dataset.id = project.id;
     projectDeleteBtn.dataset.id = project.id;
+    projectEditBtn.type = 'button';
+    projectEditBtn.setAttribute('aria-label', `Edit ${project.name}`);
     dynamicProjects.classList.toggle('active', project.id === activeProjectId);
 
     projectName.textContent = project.name;
-    projectEditBtn.textContent = 'Edit';
+    projectActions.append(projectEditBtn, projectDeleteBtn);
     projectDeleteBtn.textContent = 'Delete';
 
-    dynamicProjects.append(projectName, projectEditBtn, projectDeleteBtn);
+    dynamicProjects.append(projectName, projectActions);
 
     projectContainer.append(dynamicProjects);
   });
