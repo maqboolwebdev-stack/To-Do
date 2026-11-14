@@ -97,13 +97,43 @@ dialog::backdrop {
     0 0 20px #464545;
 }
 
+.delete-confirm-content {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  align-items: start;
+  gap: 1rem;
+}
+
+.delete-confirm-icon {
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 0, 43, 0.18);
+  border-radius: 50%;
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.delete-confirm-icon::before {
+  content: '';
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: #ff0000;
+  mask: url('../images/warn-sign.svg') center / contain no-repeat;
+  -webkit-mask: url('../images/warn-sign.svg') center / contain no-repeat;
+}
+
+.delete-confirm-details {
+  min-width: 0;
+}
+
 .delete-confirm-title {
-  margin-bottom: 1rem;
+  margin: 0 0 0.5rem;
   color: rgb(0, 255, 0);
   font-size: clamp(1.125rem, 1.4vw, 1.5rem);
 }
 
 .delete-confirm-message {
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.5;
 }

@@ -1,5 +1,8 @@
 export function confirmProjectDelete(project, onConfirm) {
   const dialog = document.createElement('dialog');
+  const content = document.createElement('div');
+  const icon = document.createElement('div');
+  const details = document.createElement('div');
   const title = document.createElement('h2');
   const message = document.createElement('p');
   const actions = document.createElement('div');
@@ -7,6 +10,9 @@ export function confirmProjectDelete(project, onConfirm) {
   const deleteButton = document.createElement('button');
 
   dialog.className = 'project-delete-confirm';
+  content.className = 'delete-confirm-content';
+  icon.className = 'delete-confirm-icon';
+  details.className = 'delete-confirm-details';
   title.className = 'delete-confirm-title';
   title.textContent = `Delete ' ${project.name} '?`;
   message.className = 'delete-confirm-message';
@@ -21,7 +27,9 @@ export function confirmProjectDelete(project, onConfirm) {
   deleteButton.textContent = 'Delete project';
 
   actions.append(cancelButton, deleteButton);
-  dialog.append(title, message, actions);
+  details.append(title, message);
+  content.append(icon, details);
+  dialog.append(content, actions);
   document.body.append(dialog);
 
   cancelButton.addEventListener('click', () => dialog.close());
