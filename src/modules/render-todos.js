@@ -70,6 +70,7 @@ export function renderTodos(project) {
     todoContainer.classList = 'todos';
     todoContainer.classList.toggle('strike-through', todo.isCompleted);
     todoCheckbox.classList = 'todo-checkbox';
+    todoCheckbox.title = todo.isCompleted ? 'Uncheck' : 'Mark as done';
     todoTitle.classList = 'todo-title';
     todoDescription.classList = 'todo-desc';
     todoPriority.classList = 'todo-priority';
