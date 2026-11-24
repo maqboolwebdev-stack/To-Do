@@ -171,6 +171,7 @@ button {
   flex: 0 0 auto;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
 }
 
 .project-name {
@@ -186,6 +187,14 @@ button {
 
 .project-name:hover {
   color: rgb(0, 255, 0);
+}
+
+.project-actions-toggle {
+  display: none;
+}
+
+.project-actions-menu {
+  display: contents;
 }
 
 .project-delete-btn,
@@ -210,6 +219,11 @@ button {
   transition:
     color 0.3s ease,
     opacity 0.3s ease;
+}
+
+.dynamic-projects .project-edit-btn span,
+.dynamic-projects .project-delete-btn span {
+  display: none;
 }
 
 .dynamic-projects .project-edit-btn {
