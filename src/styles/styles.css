@@ -92,6 +92,7 @@ body {
 
 button {
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .project-btn:hover,
