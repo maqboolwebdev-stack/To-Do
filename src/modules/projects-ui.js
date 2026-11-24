@@ -47,6 +47,7 @@ export function renderProjects() {
     dynamicProjects.classList.toggle('active', project.id === activeProjectId);
 
     projectName.textContent = project.name;
+    projectName.title = project.name;
     projectActions.append(projectEditBtn, projectDeleteBtn);
 
     dynamicProjects.append(projectName, projectActions);

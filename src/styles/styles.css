@@ -15,8 +15,9 @@
 body {
   font-family: 'glory', sans-serif;
   user-select: none;
-  height: 100vh;
-  width: 100vw;
+  height: 100dvh;
+  width: 100%;
+  min-width: 20rem;
   background-color: #0d0d0d;
   display: grid;
   place-items: center;
@@ -25,7 +26,7 @@ body {
 }
 
 .main {
-  height: 80%;
+  height: min(80dvh, 60rem);
   width: 80%;
   border-radius: 10px;
   box-shadow:
@@ -34,7 +35,8 @@ body {
     0 0 40px #4a4b4b;
   display: grid;
   grid-template-columns: 1fr 4fr;
-  max-height: 80vh;
+  max-width: 96rem;
+  max-height: min(80dvh, 60rem);
   overflow: hidden;
 }
 
@@ -139,6 +141,7 @@ button {
 
 .projects {
   display: flex;
+  flex: 1 1 0;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -151,20 +154,21 @@ button {
 
 .dynamic-projects {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding: 0.1rem 0.5rem;
   border-left: 3px solid transparent;
   width: 90%;
+  min-width: 0;
   transition: all 0.3s ease;
-  overflow-x: auto;
-  scrollbar-color: aliceblue #0d0d0d;
-  scrollbar-width: thin;
+  overflow: hidden;
 }
 
 .project-actions {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 0.5rem;
 }
@@ -172,8 +176,12 @@ button {
 .project-name {
   font-family: 'glory', sans-serif;
   font-size: 1.2rem;
+  min-width: 0;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .project-name:hover {
@@ -199,7 +207,9 @@ button {
   background-color: currentColor;
   opacity: 0;
   pointer-events: none;
-  transition: color 0.3s ease, opacity 0.3s ease;
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease;
 }
 
 .dynamic-projects .project-edit-btn {
